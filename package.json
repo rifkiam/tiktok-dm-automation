@@ -1,0 +1,32 @@
+{
+  "name": "tiktok-automation",
+  "version": "1.0.0",
+  "description": "Daily TikTok reel finder and DM sharer using Playwright",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "run-once": "node dist/run-once.js",
+    "dev": "tsx src/run-once.ts",
+    "schedule": "tsx src/index.ts"
+  },
+  "keywords": [
+    "tiktok",
+    "playwright",
+    "automation"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "node-cron": "^4.5.0",
+    "playwright": "^1.61.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0",
+    "@types/node-cron": "^3.0.11",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}
