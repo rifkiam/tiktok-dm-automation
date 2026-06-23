@@ -7,7 +7,7 @@ on:
     #   6 PM US Eastern (EST):  '0 23 * * *'
     #   6 PM US Eastern (EDT):  '0 22 * * *'
     #   6 PM Asia/Jakarta:      '0 11 * * *'
-    - cron: "0 18 * * *"
+    - cron: "30 2 * * *"
   workflow_dispatch:
 
 concurrency:
