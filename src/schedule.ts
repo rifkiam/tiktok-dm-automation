@@ -1,7 +1,7 @@
 /** Day-of-week (0 = Sunday) → search topic */
 export const WEEKLY_TOPICS: Record<number, string> = {
   1: "ishowspeed",
-  2: "nba funny moments",
+  2: "lebron james",
   3: "drake",
   4: "dating advice",
   5: "muslim advice",

@@ -1,6 +1,9 @@
 name: TikTok daily DM
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     # GitHub Actions cron always runs in UTC.
     # 18:00 UTC ≈ 6 PM in UTC; adjust for your timezone, e.g.:

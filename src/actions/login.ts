@@ -64,21 +64,20 @@ export async function login(
     return;
   }
 
-  // await page.pause();
-
-  // console.log("Logging in to TikTok...");
-  // await page.goto(LOGIN_URL, { waitUntil: "domcontentloaded" });
-  // await dismissPopups(page);
-
   await sleep(10000);
   if (page.url() === HOME_URL && status.loggedIn) {
     console.log("Already logged in to TikTok.");
     return;
-  } else if (status.requiresLogin) {
+  } else if (!status.loggedIn || status.requiresLogin) {
     console.log("Logging in to TikTok...");
     await page.goto(LOGIN_URL, { waitUntil: "domcontentloaded" });
     await dismissPopups(page);
-    await sleep(1000);
+    await sleep(10000);
+
+    if (page.url() === HOME_URL) {
+      console.log("Redirected to the home page, not proceeding with login.");
+      return;
+    }
 
     const usernameInput = page
       .locator(
@@ -100,6 +99,8 @@ export async function login(
       .first();
     await humanClick(page, loginButton);
 
+    await page.pause();
+
     await page
       .waitForURL((url) => !url.pathname.includes("/login"), { timeout: 60000 })
       .catch(() => undefined);
@@ -107,13 +108,6 @@ export async function login(
     await sleep(3000);
     await dismissPopups(page);
   }
-
-  // const afterLogin = await checkLoginStatus(page);
-  // if (!afterLogin.loggedIn) {
-  //   throw new Error(
-  //     "Login may have failed. TikTok often requires CAPTCHA or 2FA — complete it manually in the browser window, then re-run."
-  //   );
-  // }
 
   console.log("Login successful.");
 }

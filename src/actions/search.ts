@@ -25,6 +25,8 @@ export async function findReelForTopic(
     await sleep(1500);
   }
 
+  console.log("currentpage", page.url());
+
   const videoLinks = page.locator('a[href*="/video/"]');
   await videoLinks.first().waitFor({ state: "visible", timeout: 30000 });
 

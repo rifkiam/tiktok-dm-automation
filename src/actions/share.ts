@@ -12,7 +12,7 @@ export async function sendVideoToFriend(
 
   await page.goto(videoUrl, { waitUntil: "domcontentloaded" });
   await dismissPopups(page);
-  await sleep(2000);
+  await sleep(10000);
 
   const sharedViaUi = await tryShareViaVideoButton(
     page,
